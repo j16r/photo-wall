@@ -4,8 +4,10 @@
             [ring.util.response :as ring]
             [photo-wall.views.photos :as view]))
 
+(def photos ["photo 1" "photo 2" "photo 3"])
+
 (defn index []
-  (view/index))
+  (view/index photos))
 
 (defroutes routes
   (GET  "/" [] (index)))
