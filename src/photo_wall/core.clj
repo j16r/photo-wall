@@ -14,7 +14,7 @@
 (def application (handler/site routes))
 
 (defn start [port]
-  (ring/run-jetty #'application {:port (or port 8080) :join? false}))
+  (ring/run-jetty #'application {:port port :join? false}))
 
 (defn -main [& args]
   (let [port (-> (first args) (or 8080) (Integer.))]
