@@ -1,5 +1,5 @@
 (ns photo-wall.views.photos
-  (:use [hiccup.core])
+  (:use [hiccup core])
   (:require [photo-wall.views.layout :as layout]))
 
 (defn display-photos [photos]
