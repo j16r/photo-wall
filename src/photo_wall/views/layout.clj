@@ -1,10 +1,9 @@
 (ns photo-wall.views.layout
-  (:use [hiccup.core :only [html]]
-        [hiccup.page-helpers :only [doctype include-css]]))
+  (:use [hiccup core page]))
+
 
 (defn common [title & body]
-  (html
-   (doctype :html5)
+  (html5
    [:head
     [:meta {:charset "utf-8"}]
     [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
