@@ -10,6 +10,8 @@
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1, maximum-scale=1"}]
     [:title title]
     (include-css "/stylesheets/pivots.css")
+    (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js")
+    (include-js "hello.js")
     (include-css "http://fonts.googleapis.com/css?family=Sigmar+One&v1")]
    [:body
     [:div {:id "header"}
