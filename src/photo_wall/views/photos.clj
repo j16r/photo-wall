@@ -5,7 +5,7 @@
 (defn display-photos [photos]
   [:ul
     (map (fn [photo]
-      [:li
+      [:li {:style "display: none;"}
         [:img {:src (:avatar photo) :width "150px"}]
         [:div {:class 'person} (h (:name photo))]])
       photos)])

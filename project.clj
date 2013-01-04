@@ -5,6 +5,15 @@
                  [ring/ring-jetty-adapter "1.1.0"]
                  [hiccup "1.0.1"]
                  [enlive "1.0.1"]
-                 [compojure "1.1.3"]]
-  :plugins [[lein-ring "0.7.1"]]
-  :ring {:handler photo-wall.core/application})
+                 [compojure "1.1.3"]
+                 [jayq "2.0.0"]]
+  :plugins [[lein-ring "0.7.1"]
+            [lein-cljsbuild "0.2.10"]]
+  :ring {:handler photo-wall.core/application}
+  :cljsbuild {
+    :builds [{
+        :source-path "src/cljs"
+        :compiler {
+          :output-to "resources/public/application.js"
+          :optimizations :whitespace
+          :pretty-print true}}]})
