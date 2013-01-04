@@ -1,4 +1,5 @@
 (defproject photo-wall "1.0.0-SNAPSHOT"
+  :main photo-wall.core
   :description "FIXME: write description"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [ring/ring-jetty-adapter "1.1.0"]
