@@ -8,18 +8,21 @@
 (defn fetch-url [url]
   (html/html-resource (java.net.URL. url)))
 
-(defn pivotal-photos []
+(defn fetch-photos []
   (html/select (fetch-url "http://pivotallabs.com/who") [:div.person_container :img.thumbnail]))
 
-(def all-photos
-  (map (fn [pivotal-photo]
-         {:name ((:attrs pivotal-photo) :title) :avatar ((:attrs pivotal-photo) :src)})
-       (pivotal-photos)))
+(defn format-data [photos]
+  (map (fn [{{name :title avatar :src} :attrs}]
+         {:name name :avatar avatar})
+       photos))
+
+(defn remove-blanks [photos]
+  (remove
+    (fn [p] (re-seq #"default_profile_photo" (:avatar p)))
+    photos))
 
 (def photos
-  (remove
-    (fn [photo] (re-seq #"default_profile_photo" (:avatar photo)))
-    all-photos))
+  (-> (fetch-photos) format-data remove-blanks))
 
 (def gorby-photos [{:name "Desmond" :avatar
               "https://pbs.twimg.com/media/A3u8ivyCMAATxeh.jpg:large"}
