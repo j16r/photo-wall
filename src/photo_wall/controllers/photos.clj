@@ -21,8 +21,13 @@
     (fn [p] (re-seq #"default_profile_photo" (:avatar p)))
     photos))
 
+(defn embiggen [photos]
+  (map
+    (fn [p] (assoc p :avatar (#(str/replace-first (:avatar %) "popup_thumb" "directory") p)))
+      photos))
+
 (def photos
-  (-> (fetch-photos) format-data remove-blanks))
+  (-> (fetch-photos) format-data remove-blanks embiggen))
 
 (def gorby-photos [{:name "Desmond" :avatar
               "https://pbs.twimg.com/media/A3u8ivyCMAATxeh.jpg:large"}

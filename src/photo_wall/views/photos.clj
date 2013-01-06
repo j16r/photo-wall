@@ -6,7 +6,7 @@
   [:ul
     (map (fn [photo]
       [:li {:style "display: none;"}
-        [:img {:src (:avatar photo) :width "150px"}]
+        [:img {:src (:avatar photo)}]
         [:div {:class 'person} (h (:name photo))]])
       photos)])
 
