@@ -11,10 +11,15 @@
 (defn pivotal-photos []
   (html/select (fetch-url "http://pivotallabs.com/who") [:div.person_container :img.thumbnail]))
 
-(def photos
+(def all-photos
   (map (fn [pivotal-photo]
          {:name ((:attrs pivotal-photo) :title) :avatar ((:attrs pivotal-photo) :src)})
        (pivotal-photos)))
+
+(def photos
+  (remove
+    (fn [photo] (re-seq #"default_profile_photo" (:avatar photo)))
+    all-photos))
 
 (def gorby-photos [{:name "Desmond" :avatar
               "https://pbs.twimg.com/media/A3u8ivyCMAATxeh.jpg:large"}
