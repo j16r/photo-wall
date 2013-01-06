@@ -10,6 +10,7 @@
   :plugins [[lein-ring "0.7.1"]
             [lein-cljsbuild "0.2.10"]]
   :ring {:handler photo-wall.core/application}
+  :hooks [leiningen.cljsbuild]
   :cljsbuild {
     :builds [{
         :source-path "src/cljs"
