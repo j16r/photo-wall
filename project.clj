@@ -10,10 +10,15 @@
   :plugins [[lein-ring "0.7.1"]
             [lein-cljsbuild "0.2.10"]]
   :ring {:handler photo-wall.core/application}
+  :hooks [leiningen.cljsbuild]
   :cljsbuild {
     :builds [{
         :source-path "src/cljs"
         :compiler {
           :output-to "resources/public/application.js"
           :optimizations :whitespace
-          :pretty-print true}}]})
+          :pretty-print true}}]}
+  :repositories {"stuart" "http://stuartsierra.com/maven2"}
+  :profiles {:dev {:dependencies [[midje "1.4.0"]
+                                  [com.stuartsierra/lazytest "1.2.3"]]
+                   :plugins [[lein-midje "2.0.1"]]}})

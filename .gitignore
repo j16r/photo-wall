@@ -5,3 +5,5 @@
 /native
 /.lein*
 /checkouts
+resources/public/application.js
+target
